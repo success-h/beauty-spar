@@ -1,11 +1,11 @@
-'use client';
-import { SectionProps } from '@/app/[lang]/dictionaries';
-import { useLanguage } from '@/context/LanguageContext';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
+"use client";
+import { SectionProps } from "@/app/[lang]/dictionaries";
+import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
 
-const SUPPORTED_LANGUAGES = ['en', 'es', 'nl'];
+const SUPPORTED_LANGUAGES = ["en", "es", "nl"];
 
 export default function Header({ dict }: SectionProps) {
   const router = useRouter();
@@ -15,7 +15,7 @@ export default function Header({ dict }: SectionProps) {
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedLang = e.target.value;
-    const segments = pathname.split('/');
+    const segments = pathname.split("/");
 
     if (SUPPORTED_LANGUAGES.includes(segments[1])) {
       segments[1] = selectedLang;
@@ -23,14 +23,14 @@ export default function Header({ dict }: SectionProps) {
       segments.splice(1, 0, selectedLang);
     }
 
-    const newPath = segments.join('/') || '/';
+    const newPath = segments.join("/") || "/";
     //@ts-expect-error error
     setLanguage(selectedLang);
     router.push(newPath);
   };
 
   return (
-    <header className="bg-[#FCFAF8] border-b border-gray-400 shadow-sm py-4 px-6 z-50 fixed right-0 left-0">
+    <header className="bg-[#FCFAF8] border-b border-gray-200  py-4 px-6 z-50 fixed right-0 left-0">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <Link href="/" className="text-2xl font-mono font-bold text-gray-800">
           Anny
@@ -54,9 +54,9 @@ export default function Header({ dict }: SectionProps) {
             onChange={handleLanguageChange}
             className="ml-4 px-2 py-1 border rounded text-gray-700"
           >
-            <option value="en">English</option>
-            <option value="es">Español</option>
-            <option value="nl">Nederlands</option>
+            <option value="en">🇬🇧English</option>
+            <option value="es">🇪🇸Español</option>
+            <option value="nl">🇳🇱Nederlands</option>
             {/* Add more options here if needed */}
           </select>
         </nav>
